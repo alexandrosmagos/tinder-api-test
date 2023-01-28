@@ -79,7 +79,7 @@ async function getMessages(matchID) {
             return console.log("New conv saved.")
         }
 
-        const saved = await db.get("63b1ddbd35ce84010001f26e63d0fc77fbfc9101005d3b92");
+        const saved = await db.get(matchID);
         if (await saved.length < response.data.data.messages.length) {
             await db.set(matchID, response.data.data.messages);
             return console.log(`New message: ${response.data.data.messages[0].message}`);
